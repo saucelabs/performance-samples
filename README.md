@@ -7,6 +7,12 @@ This repository contains samples for demonstrating Sauce Performance features. T
 2. [Performance Flows](#2-performance-flows)
 3. [Jankiness Test](#3-jankiness-test)
 
+To be able to run the example you need to install some dependencies via:
+
+```sh
+$ npm install
+```
+
 # 1. Speedo
 
 Speedo is our Performance side kick that allows to use Sauce Performance without having to setup anything. You can install it on your machine using NPM:
