@@ -1,0 +1,12 @@
+{
+  "name": "performance-demos",
+  "version": "1.0.0",
+  "dependencies": {
+    "webdriverio": "^5.12.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "jankiness": "node ./jankiness.check.js",
+    "speedo": "speedo run https://magnificent-cabbage.glitch.me/ -n \"Magnificent Demo\" -b \"Magnificent Build\""
+  }
+}
