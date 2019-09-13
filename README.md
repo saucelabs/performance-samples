@@ -1,17 +1,19 @@
 Performance Samples
 ===================
 
-This repository contains samples for demonstrating Sauce Performance features. The examples described in this samples repository are written in [Node.js](https://nodejs.org/en/) and [WebdriverIO](https://webdriver.io) but can be transformed into any language or any framework.
+This repository contains samples for demonstrating Sauce Performance features. The examples are written in [Node.js](https://nodejs.org/en/) and [WebdriverIO](https://webdriver.io) but can be transformed into any language or any framework.
 
 1. [Speedo](#1-speedo)
 2. [Performance Flows](#2-performance-flows)
 3. [Jankiness Test](#3-jankiness-test)
 
-To be able to run the example you need to install some dependencies via:
+To be able to run the examples, you need to install some dependencies via:
 
 ```sh
 $ npm install
 ```
+
+All of this can be integrated into a CI pipeline to run performance test as part of your CI/CD cycle. Please have a look at our [performance-CI-demo](https://github.com/saucelabs/performance-CI-demo) that is using Circle CI as continous integration platform.
 
 # 1. Speedo
 
