@@ -3,9 +3,9 @@ Performance Samples
 
 This repository contains samples for demonstrating Sauce Performance features. The examples described in this samples repository are written in [Node.js](https://nodejs.org/en/) and [WebdriverIO](https://webdriver.io) but can be transformed into any language or any framework.
 
-1. Speedo
-2. Performance Flows
-3. Jankiness Test
+1. [Speedo](#1-speedo)
+2. [Performance Flows](#2-performance-flows)
+3. [Jankiness Test](#3-jankiness-test)
 
 # 1. Speedo
 
@@ -93,7 +93,7 @@ __Note:__ our demo application has an obvious performance flaw in its [inventory
 
 ![View Trace Logs](./images/viewTraceLog.gif "View Trace Logs")
 
-3. Jankiness Test
+# 3. Jankiness Test
 
 Next to being able to test soft and hard page transitions Sauce Labs provides the ability to check the smoothness feel of a page. Whenever the user feels a stuttering or a juddering on a page it results in a bad performance experience as it seems that the browser is really busy computing the website. Sauce Labs has created a new custom command that allows to test against this. When being called, it scrolls for 5 seconds from the top to the bottom of the page and captures enough information to make an assumption on the jankiness. In `jankiness.check.js` you see an example of such an application. You can call the sample script by calling:
 
