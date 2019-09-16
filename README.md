@@ -101,6 +101,26 @@ __Note:__ our demo application has an obvious performance flaw in its [inventory
 
 ![View Trace Logs](./images/viewTraceLog.gif "View Trace Logs")
 
+Sauce Labs capture performance metrics for soft as well as for hard page transitions. The example describe above shows how you can measure performance when the browser is loading a complete new page every time a page transition happens. However there are pages were the transition is soft meaning that there is no new page being loaded in the browser execution context. In the `spa.check.js` we are doing an order on [Postmates.com](https://postmates.com/). Here, besides of the initial page load, all page transitions are soft. For these we capture the same metrics as for hard page transitions with the exection of the `load` event duration:
+
+```js
+{
+  estimatedInputLatency: 17,
+  timeToFirstByte: 12,
+  domContentLoaded: 508,
+  firstVisualChange: 0,
+  firstPaint: 62,
+  firstContentfulPaint: 62,
+  firstMeaningfulPaint: 4431,
+  lastVisualChange: 4980,
+  firstCPUIdle: 4471,
+  firstInteractive: 4471,
+  speedIndex: 2774
+}
+```
+
+Additionally some of the metric can be `0` (e.g. `firstVisualChange`) depending on how your application is initiating the transition.
+
 # 3. Jankiness Test
 
 Next to being able to test soft and hard page transitions Sauce Labs provides the ability to check the smoothness feel of a page. Whenever the user feels a stuttering or a juddering on a page it results in a bad performance experience as it seems that the browser is really busy computing the website. Sauce Labs has created a new custom command that allows to test against this. When being called, it scrolls for 5 seconds from the top to the bottom of the page and captures enough information to make an assumption on the jankiness. In `jankiness.check.js` you see an example of such an application. You can call the sample script by calling:
