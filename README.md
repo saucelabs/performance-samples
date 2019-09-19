@@ -45,6 +45,10 @@ Speedo provides a variety of parameters that tweak the environment you run your 
 $ speedo run https://www.saucedemo.com --region eu --metric speedIndex --metric timeToInteractive --name "my Speedo test"
 ```
 
+Once the command is being executed Speedo shows an interactive interface that provides information on what it is currently doing and shows all metrics as well as a link to the Sauce Performance report page:
+
+![Speedo Demo](./images/speedo-demo.gif "Demo of how Speedo runs")
+
 __Note:__ By default Speedo runs its test in an emulated mobile environment that throttles the network to a "Good 3G" connection and the CPU by 4. This by design as it better helps us to detect performance problems between test runs. It can be disabled by setting `throttleNetwork` and `throttleCpu` parameters.
 
 # 2. Performance Flows
