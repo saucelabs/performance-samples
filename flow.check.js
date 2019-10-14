@@ -52,7 +52,7 @@ let browser
    * For that you can use the log command to receive the captured metrics and
    * assert them directly:
    */
-  const metrics = await browser.execute('sauce:log', { type: 'sauce:performance' })
+  const metrics = await browser.getPageLogs('sauce:performance')
   assert.ok(metrics.load < 5000)
 
   /**
