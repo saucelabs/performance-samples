@@ -1,7 +1,7 @@
 const assert = require('assert')
 const { remote } = require('webdriverio')
 
-const JOB_NAME = 'Performance User Flow in SPA Test'
+const JOB_NAME = 'Performance User Flow in SPA'
 
 let browser
 ;(async () => {
@@ -45,7 +45,8 @@ let browser
    * written in a different programming language.
    */
   let result = await browser.assertPerformance(JOB_NAME, ['score'])
-  assert.equal(result.result, 'pass', 'Performance test for opening main page did not pass')
+  assert.equal(result.result, 'pass',
+    'Performance test for opening main page did not pass')
 
   /**
    * You can also make strict assertion in the metrics. For example given your
@@ -68,7 +69,8 @@ let browser
    * test performance of feed page (https://postmates.com/feed)
    */
   result = await browser.assertPerformance(JOB_NAME, ['score'])
-  assert.equal(result.result, 'pass', 'Performance test for the feed did not pass')
+  assert.equal(result.result, 'pass',
+    'Performance test for the feed did not pass')
 
   /**
    * open item
@@ -80,7 +82,8 @@ let browser
    * test performance of a shop page (e.g. https://postmates.com/merchant/salt-straw-san-francisco)
    */
   result = await browser.assertPerformance(JOB_NAME, ['score'])
-  assert.equal(result.result, 'pass', 'Performance test for product details page did not pass')
+  assert.equal(result.result, 'pass',
+    'Performance test for product details page did not pass')
 
   /**
    * Add item to cart. Since this doesn't modifies the URL (only id parameter is added)
