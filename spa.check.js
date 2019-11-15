@@ -1,7 +1,7 @@
 const assert = require('assert')
 const { remote } = require('webdriverio')
 
-const JOB_NAME = 'Performance User Flow in SPA'
+const JOB_NAME = 'Performance User Flow in Single Page Apps Demo'
 
 let browser
 ;(async () => {
@@ -44,6 +44,7 @@ let browser
    * This allows us to provide the custom command also for other frameworks
    * written in a different programming language.
    */
+  await browser.pause(5000) // ToDo (Christian): remove
   let result = await browser.assertPerformance(JOB_NAME, ['score'])
   assert.equal(result.result, 'pass',
     'Performance test for opening main page did not pass')
@@ -55,19 +56,20 @@ let browser
    * assert them directly:
    */
   const metrics = await browser.getPageLogs('sauce:performance')
-  assert.ok(metrics.load < 7000)
+  assert.ok(metrics.load < 8000)
 
   /**
    * login
    */
-  const username = await browser.$('#e2e-geosuggest-input')
+  const username = await browser.$('.geosuggest__input')
   await username.setValue('San Francisco')
-  const submitBtn = await browser.$('#e2e-go-button')
+  const submitBtn = await browser.$('.//div/span[normalize-space() = "San Francisco, CA, USA"]')
   await submitBtn.click()
 
   /**
    * test performance of feed page (https://postmates.com/feed)
    */
+  await browser.pause(5000) // ToDo (Christian): remove
   result = await browser.assertPerformance(JOB_NAME, ['score'])
   assert.equal(result.result, 'pass',
     'Performance test for the feed did not pass')
@@ -75,12 +77,13 @@ let browser
   /**
    * open item
    */
-  const items = await browser.$$('#e2e-carousel-0')
+  const items = await browser.$$('div[role="presentation"]')
   await items[1].click()
 
   /**
    * test performance of a shop page (e.g. https://postmates.com/merchant/salt-straw-san-francisco)
    */
+  await browser.pause(5000) // ToDo (Christian): remove
   result = await browser.assertPerformance(JOB_NAME, ['score'])
   assert.equal(result.result, 'pass',
     'Performance test for product details page did not pass')
@@ -89,15 +92,16 @@ let browser
    * Add item to cart. Since this doesn't modifies the URL (only id parameter is added)
    * it doesn't capture performance for it as we don't consider it a page transition.
    */
-  const addItemBtn = await browser.$('#e2e-category-product-0')
+  const addItemBtn = await browser.$('.product-container')
   await addItemBtn.click()
-  const addToCart = await browser.$('#e2e-add-to-cart')
+  const addToCart = await browser.$('button[type="submit"]')
   await addToCart.click()
 
   /**
    * go to shopping cart
    */
-  const cart = await browser.$('#e2e-view-cart-button')
+  const headerButtons = await browser.$$('#js-merchant-actionbar button')
+  const cart = headerButtons.pop()
   await cart.click()
 
   /**
